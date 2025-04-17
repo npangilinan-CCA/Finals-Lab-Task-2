@@ -1,4 +1,4 @@
-# [Finals Lab Task 2 - Transforming ER Model to Relational Tables](https://github.com/user-attachments/files/19789037/pangilinan_FinalsLabTask2.docx)
+# [Finals Lab Task 2 - Transforming ER Model to Relational Tables](https://github.com/user-attachments/files/19791951/pangilinan_FinalsLabTask2.docx)
 This portfolio is about converting an Entity-Relationship (ER) diagram—centered on student assignment submissions—into a set of MySQL database tables. It involves capturing all relevant entities along with their attributes, and establishing the relationships between students, assignments, and their submissions.
 
 ## Step by Step Process
