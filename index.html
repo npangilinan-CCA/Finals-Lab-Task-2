@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -254,28 +255,6 @@
         }
         }
 
-        /* Section Styles */
-        .section-title {
-            font-family: 'UnifrakturCook', cursive;
-            font-size: 2.4rem;
-            color: var(--chrome-white);
-            text-shadow: 
-                0 0 10px rgba(255,255,255,0.2),
-                0 0 20px rgba(255,255,255,0.1);
-            margin: 3rem 0 2rem;
-            border-bottom: 2px solid var(--chrome-silver);
-            padding-bottom: 0.8rem;
-            transition: all 0.3s ease;
-        }
-
-        .section-title:hover {
-            transform: scale(1.02);
-            border-bottom-width: 3px;
-            text-shadow: 
-                0 0 15px rgba(255,255,255,0.3),
-                0 0 30px rgba(255,255,255,0.2);
-        }
-
        /* Enhanced Section Styles */
         .section {
             margin: 3rem 0;
@@ -471,6 +450,31 @@
             justify-content: center;
             text-shadow: 0 0 10px currentColor;
         }
+        
+         /* Animations */
+        @keyframes colorShift {
+            0% {
+                background-position: 0% 50%;
+                filter: hue-rotate(0deg);
+            }
+            25% {
+                background-position: 100% 50%;
+                filter: hue-rotate(90deg);
+            }
+            50% {
+                background-position: 50% 100%;
+                filter: hue-rotate(180deg);
+            }
+            75% {
+                background-position: 50% 0%;
+                filter: hue-rotate(270deg);
+            }
+            100% {
+                background-position: 0% 50%;
+                filter: hue-rotate(360deg);
+            }
+        }
+        
     </style>
 </head>
 <body>
