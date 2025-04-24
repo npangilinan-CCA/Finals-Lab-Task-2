@@ -161,23 +161,20 @@
             animation: pulse 1.5s infinite;
         }
 
-        /* Title Container */
+       /* Enhanced Title Styles */
         .title-container {
             position: relative;
             text-align: center;
             margin-bottom: 3rem;
             padding: 2rem;
-            perspective: 1000px;
         }
 
-        .main-title, .subtitle {
+        .main-title {
+            position: relative;
+            display: inline-block;
             font-family: 'UnifrakturCook', cursive;
-            text-align: center;
-            background: linear-gradient(45deg, 
-                #c0c0c0, #ffffff, #808080,
-                #c0c0c0, #ffffff, #808080
-            ) !important;
-            background-size: 200% 200% !important;
+            font-size: 3rem !important;
+            background: linear-gradient(45deg, #c0c0c0, #ffffff, #808080) !important;
             -webkit-background-clip: text !important;
             background-clip: text !important;
             -webkit-text-fill-color: transparent !important;
@@ -185,22 +182,76 @@
             padding: 1rem !important;
             margin: 0 !important;
             cursor: pointer;
-            position: relative;
-            animation: shimmer 3s infinite;
+        }
+
+        .main-title::before,
+        .main-title::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent,
+                #FFB6C1, #4169E1, #FFD700, #FF0000, #00FF00,
+                transparent
+            );
+            transition: width 0.5s ease;
+        }
+
+        .main-title::before {
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+
+        .main-title::after {
+            right: 50%;
+            bottom: 0;
+            transform: translateX(50%);
+        }
+
+        .title-container:hover .main-title::before,
+        .title-container:hover .main-title::after {
+            width: 100%;
+        }
+
+        .title-container:hover .main-title {
             text-shadow: 
-                0 0 10px rgba(255,255,255,0.2),
-                0 0 20px rgba(255,255,255,0.1),
-                0 0 30px rgba(255,255,255,0.1);
-        }
-
-        .main-title {
-            font-size: 3.5rem;
+                0 0 10px rgba(255, 255, 255, 0.5),
+                0 0 20px rgba(255, 255, 255, 0.3),
+                0 0 30px rgba(255, 255, 255, 0.1);
             letter-spacing: 2px;
+            transform: scale(1.05);
         }
 
-        .subtitle {
-            font-size: 2.5rem;
-            margin-top: 1rem;
+        .title-container::before,
+        .title-container::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 2px;
+            height: 0;
+            background: linear-gradient(to bottom,
+                transparent,
+                var(--chrome-silver),
+                transparent
+            );
+            transition: height 0.3s ease;
+        }
+
+        .title-container::before {
+            left: 0;
+        }
+
+        .title-container::after {
+            right: 0;
+        }
+
+        .title-container:hover::before,
+        .title-container:hover::after {
+            height: 80%;
+            transform: translateY(-50%);
+        }
         }
 
         /* Section Styles */
@@ -225,46 +276,89 @@
                 0 0 30px rgba(255,255,255,0.2);
         }
 
-        /* Process List */
-        .process-list {
-            list-style: none;
-            padding: 0;
-            font-size: 1.2rem;
-        }
-
-        .process-list li {
+       /* Enhanced Section Styles */
+        .section {
+            margin: 3rem 0;
+            padding: 2rem;
             background: rgba(255, 255, 255, 0.05);
-            margin: 1rem 0;
-            padding: 1rem;
+            border: 1px solid var(--chrome-silver);
             border-radius: 8px;
-            transition: all 0.4s ease;
-            position: relative;
-            border: 1px solid rgba(192, 192, 192, 0.1);
-        }
-
-        .process-list li::before {
-            content: '♱';
-            position: absolute;
-            left: -30px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--chrome-silver);
-            opacity: 0;
             transition: all 0.3s ease;
         }
 
-        .process-list li:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateX(20px);
-            border-color: var(--chrome-silver);
+        .section:hover {
+            background: rgba(255, 255, 255, 0.08);
             box-shadow: 
-                0 0 10px rgba(192, 192, 192, 0.2),
-                0 0 20px rgba(192, 192, 192, 0.1);
+                0 0 20px rgba(192, 192, 192, 0.2),
+                0 0 40px rgba(192, 192, 192, 0.1);
         }
 
-        .process-list li:hover::before {
-            opacity: 1;
-            left: 10px;
+        .section-title {
+            font-family: 'UnifrakturCook', cursive;
+            font-size: 2.4rem;
+            background: linear-gradient(45deg, 
+                var(--cross-green), var(--cross-yellow), var(--cross-red),
+                var(--cross-blue), var(--cross-pink)
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 300% 300%;
+            animation: colorShift 10s infinite;
+            margin: 2rem 0;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--chrome-silver);
+        }
+
+        .subsection-title {
+            font-family: 'UnifrakturCook', cursive;
+            font-size: 2rem;
+            color: var(--chrome-silver);
+            margin: 1.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Enhanced List Styles */
+        ul, ol {
+            list-style: none;
+            padding-left: 1rem;
+        }
+
+        li {
+            margin: 0.8rem 0;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        li::before {
+            content: '♱';
+            position: absolute;
+            left: 0;
+            animation: colorShift 10s infinite;
+            background: linear-gradient(45deg, 
+                var(--cross-green), var(--cross-yellow), var(--cross-red),
+                var(--cross-blue), var(--cross-pink)
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 300% 300%;
+        }
+
+        li:hover {
+            transform: translateX(15px);
+            background: linear-gradient(45deg, 
+                rgba(144, 238, 144, 0.1),
+                rgba(255, 215, 0, 0.1),
+                rgba(255, 99, 71, 0.1),
+                rgba(65, 105, 225, 0.1),
+                rgba(255, 182, 193, 0.1)
+            );
+            background-size: 300% 300%;
+            animation: colorShift 10s infinite;
+            border-radius: 5px;
+            padding: 10px 20px;
         }
 
         /* Chrome Frame */
@@ -383,7 +477,7 @@
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
         <div class="loading-content">
-            <div class="loading-logo">Loading</div>
+            <div class="loading-logo">Finals Lab Task 2</div>
             <div class="loading-cross">♱</div>
             <div class="loading-bar-container">
                 <div class="loading-bar"></div>
@@ -394,8 +488,7 @@
 
     <div class="container">
         <div class="title-container">
-            <div class="main-title">Finals Lab Task 2</div>
-            <div class="subtitle">Transforming ER Model to Relational Tables</div>
+            <div class="main-title">Finals Lab Task 2 - Transforming ER Model to Relational Tables</div>
         </div>
 
         <p class="description">
